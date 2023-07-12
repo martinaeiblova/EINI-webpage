@@ -28,6 +28,9 @@ body {
 .header-title {
     height: 4.5rem;
     transition: all 0.3s;
+
+    display: flex;
+    align-items: center;
 }
 
 .nav {
@@ -37,17 +40,13 @@ body {
     height: 9rem;
     width: 100%;
     padding: 0 6rem;
-    z-index: 100;
 }
 
 .nav-link {
     display: flex;
     align-items: center;
     list-style: none;
-}
-
-.nav-item {
-    margin-right: 4rem;
+    gap: 4rem;
 }
 
 .header-moto {
