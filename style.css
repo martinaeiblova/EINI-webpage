@@ -91,12 +91,14 @@ body {
 }
 
 .section-name {
-    color: rgb(19, 116, 19);
+    color: #22c55e;
 }
 
 .section-description {
     font-size: 2.5rem;
 }
+
+/*Section 1 */
 
 .dilna {
     display: grid;
@@ -108,4 +110,45 @@ body {
 .section1-description {
     font-size: 1rem;
     padding-top: 1.7rem;
+}
+
+/*Section 2 */
+
+.udrzitelnost {
+    max-width: 100rem;
+    margin: 12rem auto 0 auto;
+    background-color: white;
+}
+
+.buttons-section2 {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    transform: translateY(-50%);
+}
+
+.content-section2 {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 7em;
+}
+
+.btn-section2 {
+    display: flex;
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    border: 2px solid #15803d;
+    background-color: #86efac;
+    border-radius: 50px;
+}
+
+.btn-section2:hover {
+    /*background-color: #22c55e;*/
+    background-color: #fbbf24;
+    border: 2px solid #d97706;
+}
+
+.btn-section2-active {
+    transform: translateY(-30%);
+    background-color: #fbbf24;
 }
