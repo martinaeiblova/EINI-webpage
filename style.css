@@ -116,8 +116,9 @@ body {
 
 .udrzitelnost {
     max-width: 100rem;
-    margin: 12rem auto 0 auto;
-    background-color: white;
+    margin: 12rem 5rem 0 5rem;
+
+    background-color: rgb(245, 245, 243);
 }
 
 .buttons-section2 {
@@ -131,6 +132,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 4rem 7em;
+    font-size: 1.1rem;
 }
 
 .btn-section2 {
