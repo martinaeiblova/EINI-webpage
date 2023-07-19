@@ -142,6 +142,7 @@ body {
     border: 2px solid #15803d;
     background-color: #86efac;
     border-radius: 50px;
+    cursor: pointer;
 }
 
 .btn-section2:hover {
@@ -152,6 +153,7 @@ body {
     transform: translateY(-30%);
     background-color: #fbbf24;
     border: 2px solid #d97706;
+    pointer-events: none;
 }
 
 /*Section 3 */
@@ -214,4 +216,29 @@ body {
     font-size: 0.9rem;
 
     height: 10rem;
+}
+
+/*JS */
+
+.cookie-message {
+    background-color: rgb(54, 53, 53);
+    color: rgb(243, 243, 234);
+    font-size: 0.9rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0.8rem 0;
+    align-items: center;
+}
+
+.cookie-button {
+    background-color: rgb(243, 243, 234);
+    padding: 0.5rem;
+    border-radius: 10rem;
+    border: 2px solid #15803d;
+    background-color: #86efac;
+}
+
+.cookie-button:hover {
+    background-color: #fbbf24;
 }
