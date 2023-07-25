@@ -14,6 +14,8 @@ const tabs = document.querySelectorAll(".btn-section2");
 const tabsContainer = document.querySelector(".buttons-section2");
 const tabsContant = document.querySelectorAll(".content-section2");
 
+const nav = document.querySelector(".nav");
+
 document
     .querySelector(".cookie-message")
     .addEventListener("click", cookieMessage.remove);
@@ -49,4 +51,25 @@ tabsContainer.addEventListener("click", function (e) {
     document
         .querySelector(`.content${clicked.dataset.btn}-section2`)
         .classList.add("content-section2-active");
+});
+
+const handleHover = function (e, opacity) {
+    if (e.target.classList.contains("nav--item")) {
+        const link = e.target;
+        const siblings = link.closest("nav").querySelectorAll(".nav--item");
+        const logo = link.closest("nav").querySelector(".header-title");
+
+        siblings.forEach((el) => {
+            if (el != link) el.style.opacity = opacity;
+        });
+        logo.style.opacity = opacity;
+    }
+};
+
+nav.addEventListener("mouseover", function (e) {
+    handleHover(e, 0.5);
+});
+
+nav.addEventListener("mouseout", function (e) {
+    handleHover(e, 1);
 });
