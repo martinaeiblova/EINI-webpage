@@ -133,6 +133,10 @@ body {
 }
 
 .content-section2 {
+    display: none;
+}
+
+.content-section2-active {
     display: flex;
     justify-content: center;
     padding: 4rem 7em;

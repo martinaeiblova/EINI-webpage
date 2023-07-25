@@ -10,6 +10,10 @@ cookieMessage.innerHTML =
     'Používáme soubory cookie pro zlepšování funkčnosti a pro analýzu informací. <button class="cookie-button">OK</button>';
 header.after(cookieMessage);
 
+const tabs = document.querySelectorAll(".btn-section2");
+const tabsContainer = document.querySelector(".buttons-section2");
+const tabsContant = document.querySelectorAll(".content-section2");
+
 document
     .querySelector(".cookie-message")
     .addEventListener("click", cookieMessage.remove);
@@ -29,4 +33,20 @@ document.querySelector(".nav-link").addEventListener("click", function (e) {
             bahavior: "smooth",
         });
     }
+});
+
+//Section 2
+tabsContainer.addEventListener("click", function (e) {
+    const clicked = e.target.closest(".btn-section2");
+
+    if (!clicked) return;
+
+    tabs.forEach((t) => t.classList.remove("btn-section2-active"));
+    clicked.classList.add("btn-section2-active");
+
+    tabsContant.forEach((tc) => tc.classList.remove("content-section2-active"));
+
+    document
+        .querySelector(`.content${clicked.dataset.btn}-section2`)
+        .classList.add("content-section2-active");
 });
