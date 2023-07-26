@@ -4,17 +4,17 @@ const header = document.querySelector("header");
 const section1 = document.querySelector("#section--1");
 const btnScroll = document.querySelector(".btn-scroll");
 
-const cookieMessage = document.createElement("div");
-cookieMessage.classList.add("cookie-message");
-cookieMessage.innerHTML =
-    'Používáme soubory cookie pro zlepšování funkčnosti a pro analýzu informací. <button class="cookie-button">OK</button>';
-header.after(cookieMessage);
-
 const tabs = document.querySelectorAll(".btn-section2");
 const tabsContainer = document.querySelector(".buttons-section2");
 const tabsContant = document.querySelectorAll(".content-section2");
 
 const nav = document.querySelector(".nav");
+
+const cookieMessage = document.createElement("div");
+cookieMessage.classList.add("cookie-message");
+cookieMessage.innerHTML =
+    'Používáme soubory cookie pro zlepšování funkčnosti a pro analýzu informací. <button class="cookie-button">OK</button>';
+header.after(cookieMessage);
 
 document
     .querySelector(".cookie-message")
@@ -22,7 +22,6 @@ document
 
 //Scrolling
 btnScroll.addEventListener("click", function () {
-    console.log(section1.getBoundingClientRect());
     section1.scrollIntoView({ behavior: "smooth" });
 });
 
@@ -73,3 +72,21 @@ nav.addEventListener("mouseover", function (e) {
 nav.addEventListener("mouseout", function (e) {
     handleHover(e, 1);
 });
+
+const navHeight = nav.getBoundingClientRect().height;
+console.log(navHeight);
+
+const stickyNav = function (entries) {
+    const [entry] = entries;
+    console.log(entry);
+
+    if (!entry.isIntersecting) nav.classList.add("sticky");
+    else nav.classList.remove("sticky");
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
