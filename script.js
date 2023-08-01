@@ -10,6 +10,8 @@ const tabsContant = document.querySelectorAll(".content-section2");
 
 const nav = document.querySelector(".nav");
 
+const slides = document.querySelectorAll(".slide");
+
 const cookieMessage = document.createElement("div");
 cookieMessage.classList.add("cookie-message");
 cookieMessage.innerHTML =
@@ -90,3 +92,7 @@ const headerObserver = new IntersectionObserver(stickyNav, {
     rootMargin: `-${navHeight}px`,
 });
 headerObserver.observe(header);
+
+//Slider
+slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
+//I need results: 0%, 100%, 200%
