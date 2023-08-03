@@ -11,6 +11,8 @@ const tabsContant = document.querySelectorAll(".content-section2");
 const nav = document.querySelector(".nav");
 
 const slides = document.querySelectorAll(".slide");
+const btnLeft = document.querySelector(".slider-btn--left");
+const btnRight = document.querySelector(".slider-btn--right");
 
 const cookieMessage = document.createElement("div");
 cookieMessage.classList.add("cookie-message");
@@ -94,5 +96,15 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 headerObserver.observe(header);
 
 //Slider
+let curSlide = 0;
 slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
 //I need results: 0%, 100%, 200%
+
+btnRight.addEventListener("click", function () {
+    curSlide++;
+
+    slides.forEach(
+        (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
+    );
+    //I need results: -100%, 0%, 100%
+});
