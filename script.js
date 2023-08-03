@@ -97,11 +97,17 @@ headerObserver.observe(header);
 
 //Slider
 let curSlide = 0;
+const maxSlide = slides.length - 1;
+
 slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
 //I need results: 0%, 100%, 200%
 
 btnRight.addEventListener("click", function () {
-    curSlide++;
+    if (curSlide === maxSlide) {
+        curSlide = 0;
+    } else {
+        curSlide++;
+    }
 
     slides.forEach(
         (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
