@@ -118,3 +118,13 @@ btnRight.addEventListener("click", function () {
 
     nextSlide();
 });
+
+btnLeft.addEventListener("click", function () {
+    if (curSlide === 0) {
+        curSlide = maxSlide;
+    } else {
+        curSlide--;
+    }
+
+    nextSlide();
+});
