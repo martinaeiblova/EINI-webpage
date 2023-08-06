@@ -102,29 +102,33 @@ const maxSlide = slides.length - 1;
 slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
 //I need results: 0%, 100%, 200%
 
-function nextSlide() {
+function movingSlide() {
     slides.forEach(
         (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
     );
     //I need results: -100%, 0%, 100%
 }
 
-btnRight.addEventListener("click", function () {
+function nextSlide() {
     if (curSlide === maxSlide) {
         curSlide = 0;
     } else {
         curSlide++;
     }
 
-    nextSlide();
-});
+    movingSlide();
+}
 
-btnLeft.addEventListener("click", function () {
+function prevSlide() {
     if (curSlide === 0) {
         curSlide = maxSlide;
     } else {
         curSlide--;
     }
 
-    nextSlide();
-});
+    movingSlide();
+}
+
+btnRight.addEventListener("click", nextSlide);
+
+btnLeft.addEventListener("click", prevSlide);
