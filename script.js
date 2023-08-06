@@ -13,6 +13,7 @@ const nav = document.querySelector(".nav");
 const slides = document.querySelectorAll(".slide");
 const btnLeft = document.querySelector(".slider-btn--left");
 const btnRight = document.querySelector(".slider-btn--right");
+const dotContainer = document.querySelector(".dots");
 
 const cookieMessage = document.createElement("div");
 cookieMessage.classList.add("cookie-message");
@@ -138,3 +139,14 @@ document.addEventListener("keydown", function (e) {
     if (e.key === "ArrowLeft") prevSlide();
     e.key === "ArrowRight" && nextSlide();
 });
+
+//Dots in section 3
+const createDots = function () {
+    slides.forEach(function (_, i) {
+        dotContainer.insertAdjacentHTML(
+            "beforeend",
+            "<button class='dot dot-active' data-slide='${i}'></button>"
+        );
+    });
+};
+createDots();
