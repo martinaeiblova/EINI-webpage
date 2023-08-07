@@ -98,14 +98,35 @@ headerObserver.observe(header);
 
 //Slider
 let curSlide = 0;
+let slide = 0;
 const maxSlide = slides.length - 1;
+
+const createDots = function () {
+    slides.forEach(function (_, i) {
+        dotContainer.insertAdjacentHTML(
+            "beforeend",
+            `<button class="dot" data-slide="${i}"></button>`
+        );
+    });
+};
+createDots();
+
+const activateDot = function (slide) {
+    document
+        .querySelectorAll(".dot")
+        .forEach((dot) => dot.classList.remove("dot-active"));
+
+    document
+        .querySelector(`.dot[data-slide='${slide}']`)
+        .classList.add("dot-active");
+};
 
 slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
 //I need results: 0%, 100%, 200%
 
-function movingSlide() {
+function movingSlide(slide) {
     slides.forEach(
-        (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
+        (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
     );
     //I need results: -100%, 0%, 100%
 }
@@ -117,7 +138,8 @@ function nextSlide() {
         curSlide++;
     }
 
-    movingSlide();
+    movingSlide(curSlide);
+    activateDot(curSlide);
 }
 
 function prevSlide() {
@@ -127,7 +149,8 @@ function prevSlide() {
         curSlide--;
     }
 
-    movingSlide();
+    movingSlide(curSlide);
+    activateDot(curSlide);
 }
 
 btnRight.addEventListener("click", nextSlide);
@@ -141,12 +164,14 @@ document.addEventListener("keydown", function (e) {
 });
 
 //Dots in section 3
-const createDots = function () {
-    slides.forEach(function (_, i) {
-        dotContainer.insertAdjacentHTML(
-            "beforeend",
-            "<button class='dot dot-active' data-slide='${i}'></button>"
+
+dotContainer.addEventListener("click", function (e) {
+    if (e.target.classList.contains("dot")) {
+        const { slide } = e.target.dataset; // {} means destructuring, instead of: const slide = e.target.dataset.slide
+
+        slides.forEach(
+            (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
         );
-    });
-};
-createDots();
+        activateDot(slide);
+    }
+});
