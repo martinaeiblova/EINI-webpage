@@ -109,7 +109,6 @@ const createDots = function () {
         );
     });
 };
-createDots();
 
 const activateDot = function (slide) {
     document
@@ -121,8 +120,13 @@ const activateDot = function (slide) {
         .classList.add("dot-active");
 };
 
-slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
-//I need results: 0%, 100%, 200%
+function init() {
+    slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
+    //I need results: 0%, 100%, 200%
+    createDots();
+    activateDot(slide);
+}
+init();
 
 function movingSlide(slide) {
     slides.forEach(
